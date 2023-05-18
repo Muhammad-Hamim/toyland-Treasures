@@ -4,7 +4,7 @@ import { MdOutlineLockOpen, MdOutlineMailOutline } from "react-icons/md";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, githubRegister, googleRegister } = useContext(AuthContext);
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [email, setEmail] = useState("");
@@ -13,6 +13,28 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const handleGithubLogin = () => {
+    githubRegister()
+      .then((result) => {
+        console.log(result);
+        navigate("/");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleRegister()
+      .then((result) => {
+        console.log(result);
+        navigate("/");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const handleLogin = (event) => {
     event.preventDefault();
     loginUser(email, password)
@@ -244,7 +266,9 @@ const Login = () => {
               </p>
               <div>
                 <div className="flex items-center justify-center space-x-4 mt-3">
-                  <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                  <button
+                    onClick={handleGithubLogin}
+                    className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 16 16"
@@ -256,7 +280,9 @@ const Login = () => {
                     </svg>
                     Github
                   </button>
-                  <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                  <button
+                    onClick={handleGoogleLogin}
+                    className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6 mr-3"
