@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   MdInsertPhoto,
   MdOutlineLockOpen,
@@ -6,8 +6,59 @@ import {
   MdAccountBox,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Registration = () => {
+  const { registerUser, setProfile, logOut } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [name, setName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleRegister = (event) => {
+    event.preventDefault();
+    setErrorMessage("");
+    if (password.length < 6) {
+      setErrorMessage("Please provide at least 6 character password");
+      return;
+    } else if (!/^(?=.*[a-z])/.test(password)) {
+      setErrorMessage("Please provide at least one lowercase letter");
+      return;
+    } else if (!/^(?=.*[A-Z])/.test(password)) {
+      setErrorMessage("Please provide at least one uppercase letter");
+      return;
+    } else if (!/(?=.*\d.*\d)/.test(password)) {
+      setErrorMessage("Please provide at least two number");
+      return;
+    } else if (!/(?=.*[!@#$%^&*()-_=+])/.test(password)) {
+      setErrorMessage("Please provide at least one special character");
+      return;
+    }
+    registerUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setProfile(name, photoURL)
+          .then(() => {
+            logOut()
+              .then(() => {})
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        setName("");
+        setPhotoURL("");
+        setEmail("");
+        setPassword("");
+        navigate("/");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <>
       {/* component */}
@@ -231,7 +282,7 @@ const Registration = () => {
                 <h1 className="font-bold text-3xl text-gray-900">REGISTER</h1>
                 <p>Enter your information to register</p>
               </div>
-              <form>
+              <form onSubmit={handleRegister}>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
                     <label htmlFor="" className="text-xs font-semibold px-1">
@@ -244,6 +295,10 @@ const Registration = () => {
                       </div>
                       <input
                         type="text"
+                        value={name}
+                        onChange={(e) => {
+                          setName(e.target.value);
+                        }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="John Smit"
                       />
@@ -260,7 +315,11 @@ const Registration = () => {
                         <MdInsertPhoto className="text-gray-400 text-lg"></MdInsertPhoto>
                       </div>
                       <input
-                        type="email"
+                        type="text"
+                        value={photoURL}
+                        onChange={(e) => {
+                          setPhotoURL(e.target.value);
+                        }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="https://i.ibb.co/mDRj0YS/avater.jpg"
                       />
@@ -279,6 +338,10 @@ const Registration = () => {
                       </div>
                       <input
                         type="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                       />
@@ -297,6 +360,10 @@ const Registration = () => {
                       </div>
                       <input
                         type="password"
+                        value={password}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                        }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
