@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "toyName": "Iron Man",
+    "description": "Tech Genius Avenger",
+    "image": "../src/assets/gallery/iron_man.jpg",
+    "rating": 4.5
+  },
+  {
+    "id": 2,
+    "toyName": "Spider Man",
+    "description": "Friendly Neighborhood Hero",
+    "image": "../src/assets/gallery/spider_man.jpg",
+    "rating": 4.8
+  },
+  {
+    "id": 3,
+    "toyName": "Batman",
+    "description": "Dark Knight Vigilante",
+    "image": "../src/assets/gallery/batman.jpg",
+    "rating": 4.7
+  },
+  {
+    "id": 4,
+    "toyName": "Superman",
+    "description": "Last Son of Krypton",
+    "image": "../src/assets/gallery/superman.jpg",
+    "rating": 4.6
+  },
+  {
+    "id": 5,
+    "toyName": "Captain America",
+    "description": "Star-Spangled Avenger",
+    "image": "../src/assets/gallery/captain_america.jpg",
+    "rating": 4.5
+  },
+  {
+    "id": 6,
+    "toyName": "Thor",
+    "description": "God of Thunder",
+    "image": "../src/assets/gallery/thor.jpg",
+    "rating": 4.6
+  },
+  {
+    "id": 7,
+    "toyName": "Black Widow",
+    "description": "Deadly Super Spy",
+    "image": "../src/assets/gallery/black_widow.jpg",
+    "rating": 4.4
+  },
+  {
+    "id": 8,
+    "toyName": "Hulk",
+    "description": "Incredible Green Powerhouse",
+    "image": "../src/assets/gallery/hulk.jpg",
+    "rating": 4.7
+  },
+  {
+    "id": 9,
+    "toyName": "Wolverine",
+    "description": "Adamantium-Clawed Mutant",
+    "image": "../src/assets/gallery/wolverine.jpg",
+    "rating": 4.8
+  },
+  {
+    "id": 10,
+    "toyName": "Wonder Woman",
+    "description": "Amazonian Warrior Princess",
+    "image": "../src/assets/gallery/wonder_woman.jpg",
+    "rating": 4.6
+  },
+  {
+    "id": 11,
+    "toyName": "Black Panther",
+    "description": "Wakandan King and Hero",
+    "image": "../src/assets/gallery/black_panther.jpg",
+    "rating": 4.7
+  },
+  {
+    "id": 12,
+    "toyName": "Hawkeye",
+    "description": "Master Archer Avenger",
+    "image": "../src/assets/gallery/hawkeye.jpg",
+    "rating": 4.3
+  },
+  {
+    "id": 13,
+    "toyName": "Green Lantern",
+    "description": "Guardian of Sector 2814",
+    "image": "../src/assets/gallery/green_lantern.jpg",
+    "rating": 4.5
+  },
+  {
+    "id": 14,
+    "toyName": "Aquaman",
+    "description": "King of Atlantis",
+    "image": "../src/assets/gallery/aquaman.jpg",
+    "rating": 4.4
+  },
+  {
+    "id": 15,
+    "toyName": "Doctor Strange",
+    "description": "Sorcerer Supreme",
+    "image": "../src/assets/gallery/doctor_strange.jpg",
+    "rating": 4.6
+  },
+  {
+    "id": 16,
+    "toyName": "Deadpool",
+    "description": "Merc with a Mouth",
+    "image": "../src/assets/gallery/deadpool.jpg",
+    "rating": 4.9
+  },
+  {
+    "id": 17,
+    "toyName": "Storm",
+    "description": "Weather-Controlling Mutant",
+    "image": "../src/assets/gallery/storm.jpg",
+    "rating": 4.5
+  },
+  {
+    "id": 18,
+    "toyName": "Ant-Man",
+    "description": "Size-Shifting Hero",
+    "image": "../src/assets/gallery/ant_man.jpg",
+    "rating": 4.4
+  },
+  {
+    "id": 19,
+    "toyName": "Captain Marvel",
+    "description": "Cosmic-Powered Heroine",
+    "image": "../src/assets/gallery/captain_marvel.jpg",
+    "rating": 4.7
+  },
+  {
+    "id": 20,
+    "toyName": "Groot",
+    "description": "Flora Colossus Guardian",
+    "image": "../src/assets/gallery/groot.jpg",
+    "rating": 4.6
+  }
+]
