@@ -8,27 +8,27 @@ const NavigationBar = () => {
   const NavItem = (
     <>
       <li>
-        <NavLink className="text-gray-900" to="/">
+        <NavLink className="text-[#A61F69]" to="/">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-gray-900" to="/category">
+        <NavLink className="text-[#A61F69]" to="/category">
           Category
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-gray-900" to="/collection">
+        <NavLink className="text-[#A61F69]" to="/collection">
           Collections
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-gray-900" to="/contact">
+        <NavLink className="text-[#A61F69]" to="/contact">
           Contact Us
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-gray-900" to="/login">
+        <NavLink className="text-[#A61F69]" to="/login">
           Login
         </NavLink>
       </li>
@@ -57,7 +57,7 @@ const NavigationBar = () => {
             <img className="w-24 h-fit" src={logo} alt="" />
           </Link>
           {/* Header Icons */}
-          {/* Navlink */}
+          {/* Nav link */}
           <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
             {NavItem}
           </ul>
@@ -68,7 +68,7 @@ const NavigationBar = () => {
           <div className="dropdown dropdown-end md:hidden">
             <label tabIndex={1} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <button tabIndex={1} className="btn btn-primary btn-circle">
+                <button tabIndex={1} className="btn btn-ghost btn-circle">
                   <HiBars3 className="text-2xl"></HiBars3>
                 </button>
               </div>
