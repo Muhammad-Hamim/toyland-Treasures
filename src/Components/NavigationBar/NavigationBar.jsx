@@ -14,28 +14,31 @@ const NavigationBar = () => {
       </li>
       <li>
         <NavLink className="text-[#A61F69]" to="/category">
-          Category
+          All Toys
         </NavLink>
       </li>
       <li>
         <NavLink className="text-[#A61F69]" to="/collection">
-          Collections
+          My Toys
         </NavLink>
       </li>
       <li>
         <NavLink className="text-[#A61F69]" to="/contact">
-          Contact Us
+          Add A Toy
         </NavLink>
       </li>
       <li>
         <NavLink className="text-[#A61F69]" to="/login">
-          Login
+          Blogs
         </NavLink>
       </li>
     </>
   );
   const ProfileItem = (
     <>
+      <li>
+        <NavLink to='/login' className="text-gray-900">Login</NavLink>
+      </li>
       <li>
         <a className="text-gray-900">Profile</a>
       </li>
