@@ -5,7 +5,7 @@ import {
   MdOutlineMailOutline,
   MdAccountBox,
 } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Registration = () => {
@@ -15,6 +15,10 @@ const Registration = () => {
   const [photoURL, setPhotoURL] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  
   const handleRegister = (event) => {
     event.preventDefault();
     setErrorMessage("");
@@ -370,6 +374,7 @@ const Registration = () => {
                     </div>
                   </div>
                 </div>
+                <p className="text-error">{errorMessage}</p>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
                     <label htmlFor="" className="text-xs font-semibold px-1">

@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { HiBars3 } from "react-icons/hi2";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const NavigationBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const NavItem = (
     <>
       <li>
@@ -36,18 +45,27 @@ const NavigationBar = () => {
   );
   const ProfileItem = (
     <>
-      <li>
-        <NavLink to='/login' className="text-gray-900">Login</NavLink>
-      </li>
-      <li>
-        <a className="text-gray-900">Profile</a>
-      </li>
-      <li>
-        <a className="text-gray-900">Settings</a>
-      </li>
-      <li>
-        <button className="text-gray-900">Logout</button>
-      </li>
+      {user ? (
+        <>
+          <li>
+            <a className="text-gray-900">{user?.displayName}</a>
+          </li>
+          <li>
+            <a className="text-gray-900">{user.email}</a>
+          </li>
+          <li>
+            <button onClick={handleLogOut} className="text-gray-900">
+              Logout
+            </button>
+          </li>
+        </>
+      ) : (
+        <li>
+          <NavLink to="/login" className="text-gray-900">
+            Login
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -83,14 +101,16 @@ const NavigationBar = () => {
             </ul>
           </div>
           {/* profile info */}
-          <div className="dropdown dropdown-end">
+          <div
+            className="dropdown dropdown-end tooltip tooltip-left"
+            data-tip={user?.displayName}>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <button
-                  tabIndex={0}
-                  className="btn btn-ghost btn-circle avatar">
-                  <MdOutlineAccountCircle className="text-2xl"></MdOutlineAccountCircle>
-                </button>
+              <div className="w-10 rounded-full tooltip">
+                {user ? (
+                  <img src={user?.photoURL} />
+                ) : (
+                  <MdOutlineAccountCircle className="text-4xl"></MdOutlineAccountCircle>
+                )}
               </div>
             </label>
             <ul

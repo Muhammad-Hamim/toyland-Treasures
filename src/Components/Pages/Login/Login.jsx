@@ -1,13 +1,31 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdOutlineLockOpen, MdOutlineMailOutline } from "react-icons/md";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+  const { loginUser } = useContext(AuthContext);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setSuccessMessage("User logged in successfully!");
+        navigate("/");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setErrorMessage(error.message);
+      });
   };
   return (
     <div className="w-full max-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 py-5">
@@ -269,7 +287,7 @@ const Login = () => {
               <p className="text-center text-sm text-gray-500 font-light">
                 Or sign in with credentials
               </p>
-              <form className="mt-6">
+              <form className="mt-6" onSubmit={handleLogin}>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
                     <label htmlFor="" className="text-xs font-semibold px-1">
@@ -282,6 +300,10 @@ const Login = () => {
                       </div>
                       <input
                         type="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
                       />
@@ -300,12 +322,18 @@ const Login = () => {
                       </div>
                       <input
                         type="password"
+                        value={password}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                        }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
                     </div>
                   </div>
                 </div>
+                <p className="mt-4 text-error">{errorMessage}</p>
+                <p className="mt-4 text-success">{successMessage}</p>
                 <div className="my-2 mb-2 flex items-center text-gray-500">
                   <input
                     type="checkbox"
