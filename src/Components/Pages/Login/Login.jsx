@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineLockOpen, MdOutlineMailOutline } from "react-icons/md";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+  };
   return (
     <div className="w-full max-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 py-5">
       <div
