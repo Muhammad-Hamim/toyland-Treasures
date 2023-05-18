@@ -6,21 +6,12 @@ import { HiBars3 } from "react-icons/hi2";
 
 const NavigationBar = () => {
   const [smallDevice, setSmallDevice] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
   const NavItem = (
     <>
-      <li
-        className={`${
-          smallDevice &&
-          "py-2 hover:text-slate-100 hover:bg-violet-400 transition-all px-8 duration-200"
-        }`}>
+      <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li
-        className={`${
-          smallDevice &&
-          "py-2 hover:text-slate-100 hover:bg-violet-400 transition-all px-8 duration-200"
-        }`}>
+      <li>
         <NavLink to="/">Catagory</NavLink>
       </li>
       <li
@@ -48,8 +39,14 @@ const NavigationBar = () => {
   );
   const ProfileItem = (
     <>
-      <li className="cursor-pointer font-bold py-2 hover:text-slate-100 hover:bg-violet-400 transition-all px-8 duration-200">
-        Home
+      <li>
+        <a>Profile</a>
+      </li>
+      <li>
+        <a>Settings</a>
+      </li>
+      <li>
+        <a>Logout</a>
       </li>
     </>
   );
@@ -62,45 +59,43 @@ const NavigationBar = () => {
           <Link to="/" className="text-3xl font-bold font-heading">
             <img className="w-24 h-fit" src={logo} alt="" />
           </Link>
-          {/* Nav Links */}
-          <ul
-            className={`${
-              showProfile
-                ? "absolute top-full right-5 rounded-lg shadow-xl space-y-3 block bg-white text-gray-900"
-                : "hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12"
-            }`}>
-            {NavItem}
-          </ul>
-          {/* Profile Items */}
-          <ul
-            className={`${
-              showProfile
-                ? "absolute top-full right-5 rounded-lg shadow-xl space-y-3 block bg-white text-gray-900"
-                : "hidden"
-            }`}>
-            {ProfileItem}
-          </ul>
           {/* Header Icons */}
+          
         </div>
         {/* Responsive navbar */}
-        <div className="flex px-5 space-x-5">
-          <button
-            className="block md:hidden self-center"
-            onBlur={() => {
-              setSmallDevice(false);
-            }}
-            onClick={() => {
-              setSmallDevice(!smallDevice);
-            }}>
-            <HiBars3 className="text-3xl text-gray-50"></HiBars3>
-          </button>
-          <button
-            className="flex items-center hover:text-gray-200"
-            onClick={() => {
-              setShowProfile(!showProfile);
-            }}>
-            <MdOutlineAccountCircle className="text-2xl"></MdOutlineAccountCircle>
-          </button>
+        <div className="flex items-center px-5 space-x-5">
+          {/* dropdown menu */}
+          <div className="dropdown dropdown-end">
+            <label tabIndex={1} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <button tabIndex={1} className="btn btn-primary btn-circle">
+                  <HiBars3 className="text-2xl"></HiBars3>
+                </button>
+              </div>
+            </label>
+            <ul
+              tabIndex={1}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              {NavItem}
+            </ul>
+          </div>
+          {/* profile info */}
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <button
+                  tabIndex={0}
+                  className="btn btn-ghost btn-circle avatar">
+                  <MdOutlineAccountCircle className="text-2xl"></MdOutlineAccountCircle>
+                </button>
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              {ProfileItem}
+            </ul>
+          </div>
         </div>
       </nav>
     </div>
