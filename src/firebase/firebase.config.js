@@ -5,13 +5,14 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.ToyTreasures.ToyTreasures_apiKey,
-  authDomain: process.env.ToyTreasures.ToyTreasures_authDomain,
-  projectId: process.env.ToyTreasures.ToyTreasures_projectId,
-  storageBucket: process.env.ToyTreasures.ToyTreasures_storageBucket,
-  messagingSenderId: process.env.ToyTreasures.ToyTreasures_messagingSenderId,
-  appId: process.env.ToyTreasures.ToyTreasures_appId,
+  apiKey: "AIzaSyCsYiqpMUw7_a5VKW-SZpmVG46mi1fFcmM",
+  authDomain: "toyland-treasures.firebaseapp.com",
+  projectId: "toyland-treasures",
+  storageBucket: "toyland-treasures.appspot.com",
+  messagingSenderId: "244642491164",
+  appId: "1:244642491164:web:c9fbd1b6ed6e5b40b328d9",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export default app;
