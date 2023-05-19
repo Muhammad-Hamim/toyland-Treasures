@@ -10,7 +10,7 @@ import ShopCard from "./ShopCard";
 const Shop = () => {
   const [toy, setToy] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://toyland-treasures-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         setToy(data);
