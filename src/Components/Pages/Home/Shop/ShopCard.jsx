@@ -12,11 +12,11 @@ const ShopCard = ({ toy }) => {
   const { toyPhoto, toyName, price, rating } = toy;
   return (
     <div
-      className="w-full bg-white border border-gray-200 rounded-lg shadow"
+      className="w-full relative bg-white border border-gray-200 rounded-lg shadow"
       data-aos="fade-up"
-      data-aos-anchor-placement="top-bottom">
-      <img className="rounded-t-lg" src={toyPhoto} alt="" />
-      <div className="p-5">
+      data-aos-anchor-placement="top-center">
+      <img className="rounded-t-lg h-[374px] bg-cover bg-center" src={toyPhoto} alt="" />
+      <div className="p-5 absolute left-1/2 rounded-lg -translate-x-1/2 -bottom-28 shadow-2xl w-10/12 bg-white">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
           {toyName}
         </h5>
@@ -25,7 +25,7 @@ const ShopCard = ({ toy }) => {
           far, in reverse chronological order.
         </p>
         <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800  focus:outline-none">
-          Read more
+          View details
         </button>
       </div>
     </div>

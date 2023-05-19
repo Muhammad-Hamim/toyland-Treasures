@@ -13,7 +13,7 @@ const GalleryCard = ({ gallery }) => {
   }, []);
 
   return (
-    <div data-aos="zoom-out-left">
+    <div data-aos="fade-up" data-aos-duration="3000">
       <div className="flex flex-col justify-center items-center my-8">
         <div
           style={{

@@ -5,9 +5,9 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 
 //core
 import "primereact/resources/primereact.min.css";
-import ShopCard from "./ShopCard";
+import ShopCard from "../Home/Shop/ShopCard";
 
-const Shop = () => {
+const ShopCategory = () => {
   const [toy, setToy] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/toys")
@@ -20,7 +20,7 @@ const Shop = () => {
   const uniqueCategory = [...new Set(toyCategory)];
   return (
     <div className="px-4 md:px-40 w-full py-20 mb-44">
-      <TabView className="shadow-lg">
+      <TabView>
         {uniqueCategory.map((category) => {
           const matchToy = toy.filter((match) => match.category == category);
           return (
@@ -38,4 +38,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default ShopCategory;
