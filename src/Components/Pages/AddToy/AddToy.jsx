@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   MdInsertPhoto,
   MdOutlineMailOutline,
@@ -8,10 +8,13 @@ import {
 } from "react-icons/md";
 import { TbCategory2, TbStarFilled } from "react-icons/tb";
 import { HiCurrencyDollar } from "react-icons/hi";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddToy = () => {
+  const { user } = useContext(AuthContext);
   const [toyName, setToyName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
+  const [toyPhoto, setToyPhoto] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
   const [availability, setAvailability] = useState("");
@@ -19,6 +22,41 @@ const AddToy = () => {
   const [description, setDescription] = useState("");
   const handleAdd = (event) => {
     event.preventDefault();
+    const sellerName = user ? user.displayName : "Seller name not found";
+    const sellerEmail = user ? user.email : "Email not found";
+    const toys = {
+      toyName,
+      toyPhoto,
+      sellerName,
+      sellerEmail,
+      category,
+      price,
+      availability,
+      rating,
+      description,
+    };
+    console.log(toys);
+    fetch("http://localhost:5000/toys", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toys),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire(
+            "Added!",
+            "You have been successfully added the toy.",
+            "success"
+          );
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -78,9 +116,9 @@ const AddToy = () => {
                       </div>
                       <input
                         type="text"
-                        value={photoURL}
+                        value={toyPhoto}
                         onChange={(e) => {
-                          setPhotoURL(e.target.value);
+                          setToyPhoto(e.target.value);
                         }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="https://i.ibb.co/mDRj0YS/avater.jpg"
