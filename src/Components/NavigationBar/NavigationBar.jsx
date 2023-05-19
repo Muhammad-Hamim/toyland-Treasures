@@ -35,7 +35,7 @@ const NavigationBar = () => {
           All Toys
         </li>
       </NavLink>
-      <NavLink className={`text-indigo-500`} to="/collection">
+      <NavLink className={`text-indigo-500`} to="/mytoys">
         <li
           className={`${
             visible && "py-3 border-b-2 text-center font-bold border-indigo-300"
@@ -106,7 +106,6 @@ const NavigationBar = () => {
           {/* dropdown menu */}
           <div className="dropdown dropdown-end md:hidden">
             <label
-              tabIndex={1}
               className="btn btn-ghost btn-circle avatar"
               onClick={() => setVisible(true)}>
               <div className="rounded-full">
@@ -121,11 +120,6 @@ const NavigationBar = () => {
               onHide={() => setVisible(false)}>
               <ul>{NavItem}</ul>
             </Sidebar>
-            <ul
-              tabIndex={1}
-              className="menu space-y-3 menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              {NavItem}
-            </ul>
           </div>
           {/* profile info */}
           <div

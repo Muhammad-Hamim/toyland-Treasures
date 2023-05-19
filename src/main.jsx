@@ -9,6 +9,7 @@ import Registration from "./Components/Pages/Login/Registration.jsx";
 import AuthProvider from "./Components/Providers/AuthProvider.jsx";
 import AddToy from "./Components/Pages/AddToy/AddToy";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import MyToys from "./Components/Pages/MyToys/MyToys";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddToy></AddToy>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "mytoys",
+        element: (
+          <PrivateRoute>
+            <MyToys></MyToys>
           </PrivateRoute>
         ),
       },

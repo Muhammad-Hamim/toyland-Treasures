@@ -15,7 +15,7 @@ const ShopCard = ({ toy }) => {
       className="w-full relative bg-white border border-gray-200 rounded-lg shadow"
       data-aos="fade-up"
       data-aos-anchor-placement="top-center">
-      <img className="rounded-t-lg h-[374px] bg-cover bg-center" src={toyPhoto} alt="" />
+      <img className="rounded-t-lg h-[250px] md:h-[374px] bg-cover bg-center" src={toyPhoto} alt="" />
       <div className="p-5 absolute left-1/2 rounded-lg -translate-x-1/2 -bottom-28 shadow-2xl w-10/12 bg-white">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
           {toyName}
