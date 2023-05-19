@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
-import TypeWriterEffect from "react-typewriter-effect";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import banner1 from "../../../../assets/banner/1.jpg";
@@ -28,25 +27,6 @@ const Banner = () => {
       <div className="bg-violet-400">
         <div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-900">
           <h1 className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-gray-900">
-            {/* <TypeWriterEffect
-              textStyle={{
-                fontFamily: "Red Hat Display",
-                color: "#3F3D56",
-                fontWeight: 500,
-                fontSize: "1.5em",
-              }}
-              startDelay={2000}
-              cursorColor="#3F3D56"
-              multiText={[
-                "Hey there, This is a type writer animation package",
-                "it consist of two types...",
-                "Single text display and multi text display",
-                "Fonts can be customized.",
-                "The type speed can be customized as well",
-              ]}
-              multiTextDelay={1000}
-              typeSpeed={30}
-            /> */}
             Discover Endless Possibilities in our Toy Wonderland
           </h1>
           <p className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl text-gray-900">
