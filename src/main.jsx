@@ -7,6 +7,7 @@ import Home from "./Layout/Home.jsx";
 import Login from "./Components/Pages/Login/Login.jsx";
 import Registration from "./Components/Pages/Login/Registration.jsx";
 import AuthProvider from "./Components/Providers/AuthProvider.jsx";
+import AddToy from "./Components/Pages/AddToy/AddToy";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "/registration",
         element: <Registration></Registration>,
       },
+      {
+        path: 'addtoy',
+        element: <AddToy></AddToy>,
+      }
     ],
   },
 ]);

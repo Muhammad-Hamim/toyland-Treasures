@@ -32,7 +32,7 @@ const NavigationBar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className="text-[#A61F69]" to="/contact">
+        <NavLink className="text-[#A61F69]" to="/addtoy">
           Add A Toy
         </NavLink>
       </li>
