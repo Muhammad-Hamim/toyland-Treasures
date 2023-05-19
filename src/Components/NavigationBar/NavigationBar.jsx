@@ -4,8 +4,11 @@ import { Link, NavLink } from "react-router-dom";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { HiBars3 } from "react-icons/hi2";
 import { AuthContext } from "../Providers/AuthProvider";
+import { Sidebar } from "primereact/sidebar";
+import { Button } from "primereact/button";
 
 const NavigationBar = () => {
+  const [visible, setVisible] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
@@ -16,31 +19,46 @@ const NavigationBar = () => {
   };
   const NavItem = (
     <>
-      <li>
-        <NavLink className="text-[#A61F69]" to="/">
+      <NavLink className={`text-indigo-500`} to="/">
+        <li
+          className={`${
+            visible && "py-3 border-b-2 text-center font-bold border-indigo-300"
+          }`}>
           Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className="text-[#A61F69]" to="/category">
+        </li>
+      </NavLink>
+      <NavLink className={`text-indigo-500`} to="/category">
+        <li
+          className={`${
+            visible && "py-3 border-b-2 text-center font-bold border-indigo-300"
+          }`}>
           All Toys
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className="text-[#A61F69]" to="/collection">
+        </li>
+      </NavLink>
+      <NavLink className={`text-indigo-500`} to="/collection">
+        <li
+          className={`${
+            visible && "py-3 border-b-2 text-center font-bold border-indigo-300"
+          }`}>
           My Toys
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className="text-[#A61F69]" to="/addtoy">
+        </li>
+      </NavLink>
+      <NavLink className={`text-indigo-500`} to="/addtoy">
+        <li
+          className={`${
+            visible && "py-3 border-b-2 text-center font-bold border-indigo-300"
+          }`}>
           Add A Toy
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className="text-[#A61F69]" to="/login">
+        </li>
+      </NavLink>
+      <NavLink className={`text-indigo-500`} to="/login">
+        <li
+          className={`${
+            visible && "py-3 border-b-2 text-center font-bold border-indigo-300"
+          }`}>
           Blogs
-        </NavLink>
-      </li>
+        </li>
+      </NavLink>
     </>
   );
   const ProfileItem = (
@@ -87,13 +105,22 @@ const NavigationBar = () => {
         <div className="flex items-center px-5 space-x-5">
           {/* dropdown menu */}
           <div className="dropdown dropdown-end md:hidden">
-            <label tabIndex={1} className="btn btn-ghost btn-circle avatar">
+            <label
+              tabIndex={1}
+              className="btn btn-ghost btn-circle avatar"
+              onClick={() => setVisible(true)}>
               <div className="rounded-full">
                 <button tabIndex={1} className="btn btn-ghost btn-circle">
                   <HiBars3 className="text-4xl"></HiBars3>
                 </button>
               </div>
             </label>
+            <Sidebar
+              style={{ backgroundColor: "#111827" }}
+              visible={visible}
+              onHide={() => setVisible(false)}>
+              <ul>{NavItem}</ul>
+            </Sidebar>
             <ul
               tabIndex={1}
               className="menu space-y-3 menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">

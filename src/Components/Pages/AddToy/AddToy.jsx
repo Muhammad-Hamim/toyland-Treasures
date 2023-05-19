@@ -79,7 +79,7 @@ const AddToy = () => {
               <p>Enter your information to add toy</p>
             </div>
             <form onSubmit={handleAdd}>
-              <div className="grid md:grid-cols-2 gap-4 justify-between items-center">
+              <div className="grid md:grid-cols-2 md:gap-4 md:justify-between md:items-center">
                 {/* toy name */}
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
@@ -130,7 +130,7 @@ const AddToy = () => {
               </div>
               {/* toy name and photo url */}
 
-              <div className="grid md:grid-cols-2 gap-4 justify-between items-center">
+              <div className="grid md:grid-cols-2 md:gap-4 md:justify-between md:items-center">
                 {/* category name */}
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
@@ -181,7 +181,7 @@ const AddToy = () => {
               </div>
               {/* category and price */}
 
-              <div className="grid md:grid-cols-2 gap-4 justify-between items-center">
+              <div className="grid md:grid-cols-2 md:gap-4 md:justify-between md:items-center">
                 {/* availability */}
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
