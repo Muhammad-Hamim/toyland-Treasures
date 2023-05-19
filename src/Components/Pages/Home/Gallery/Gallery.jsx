@@ -8,7 +8,6 @@ const Gallery = () => {
       .then((res) => res.json())
       .then((data) => {
         setGalleries(data);
-        console.log(data);
       });
   }, []);
   return (

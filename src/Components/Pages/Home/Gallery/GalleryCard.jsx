@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
 
 const GalleryCard = ({ gallery }) => {
   const { image, toyName, description } = gallery;
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // Animation duration (in milliseconds)
+    });
+  }, []);
+
   return (
-    <div>
+    <div data-aos="zoom-in">
       <div className="flex flex-col justify-center items-center my-8">
         <div
           style={{
