@@ -88,9 +88,9 @@ const NavigationBar = () => {
           {/* dropdown menu */}
           <div className="dropdown dropdown-end md:hidden">
             <label tabIndex={1} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+              <div className="rounded-full">
                 <button tabIndex={1} className="btn btn-ghost btn-circle">
-                  <HiBars3 className="text-2xl"></HiBars3>
+                  <HiBars3 className="text-4xl"></HiBars3>
                 </button>
               </div>
             </label>
@@ -105,7 +105,7 @@ const NavigationBar = () => {
             className="dropdown dropdown-end tooltip tooltip-left"
             data-tip={user?.displayName}>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full tooltip">
+              <div className="rounded-full tooltip">
                 {user ? (
                   <img src={user?.photoURL} />
                 ) : (
