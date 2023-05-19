@@ -13,7 +13,7 @@ const GalleryCard = ({ gallery }) => {
   }, []);
 
   return (
-    <div data-aos="zoom-in">
+    <div data-aos="zoom-out-left">
       <div className="flex flex-col justify-center items-center my-8">
         <div
           style={{
