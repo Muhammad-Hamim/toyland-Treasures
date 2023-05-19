@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   MdInsertPhoto,
-  MdOutlineLockOpen,
   MdOutlineMailOutline,
   MdAccountBox,
   MdShoppingCart,
@@ -11,11 +10,16 @@ import { TbCategory2, TbStarFilled } from "react-icons/tb";
 import { HiCurrencyDollar } from "react-icons/hi";
 
 const AddToy = () => {
-  const [name, setName] = useState("");
+  const [toyName, setToyName] = useState("");
   const [photoURL, setPhotoURL] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const handleAdd = () => {};
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [availability, setAvailability] = useState("");
+  const [rating, setRating] = useState("");
+  const [description, setDescription] = useState("");
+  const handleAdd = (event) => {
+    event.preventDefault();
+  };
   return (
     <>
       {/* component */}
@@ -51,9 +55,9 @@ const AddToy = () => {
                       </div>
                       <input
                         type="text"
-                        value={name}
+                        value={toyName}
                         onChange={(e) => {
-                          setName(e.target.value);
+                          setToyName(e.target.value);
                         }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="Iron man suit"
@@ -62,7 +66,7 @@ const AddToy = () => {
                   </div>
                 </div>
                 {/* toy name */}
-                {/* seller name */}
+                {/* toy photo */}
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
                     <label htmlFor="" className="text-xs font-semibold px-1">
@@ -84,7 +88,7 @@ const AddToy = () => {
                     </div>
                   </div>
                 </div>
-                {/* seller name */}
+                {/* toy photo */}
               </div>
               {/* toy name and photo url */}
 
@@ -98,13 +102,13 @@ const AddToy = () => {
                     <div className="flex">
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                         {/* <i className="mdi mdi-account-outline text-gray-400 text-lg" /> */}
-                        <MdAccountBox className="text-gray-400 text-lg"></MdAccountBox>
+                        <TbCategory2 className="text-gray-400 text-lg"></TbCategory2>
                       </div>
                       <input
                         type="text"
-                        value={name}
+                        value={category}
                         onChange={(e) => {
-                          setName(e.target.value);
+                          setCategory(e.target.value);
                         }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="Iron man"
@@ -121,13 +125,13 @@ const AddToy = () => {
                     </label>
                     <div className="flex">
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <MdInsertPhoto className="text-gray-400 text-lg"></MdInsertPhoto>
+                        <HiCurrencyDollar className="text-gray-400 text-lg"></HiCurrencyDollar>
                       </div>
                       <input
-                        type="text"
-                        value={photoURL}
+                        type="number"
+                        value={price}
                         onChange={(e) => {
-                          setPhotoURL(e.target.value);
+                          setPrice(e.target.value);
                         }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="73"
@@ -138,7 +142,7 @@ const AddToy = () => {
                 {/* price */}
               </div>
               {/* category and price */}
-              
+
               <div className="grid md:grid-cols-2 gap-4 justify-between items-center">
                 {/* availability */}
                 <div className="flex -mx-3">
@@ -149,13 +153,13 @@ const AddToy = () => {
                     <div className="flex">
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                         {/* <i className="mdi mdi-account-outline text-gray-400 text-lg" /> */}
-                        <MdAccountBox className="text-gray-400 text-lg"></MdAccountBox>
+                        <MdShoppingCart className="text-gray-400 text-lg"></MdShoppingCart>
                       </div>
                       <input
-                        type="text"
-                        value={name}
+                        type="number"
+                        value={availability}
                         onChange={(e) => {
-                          setName(e.target.value);
+                          setAvailability(e.target.value);
                         }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="267"
@@ -172,13 +176,13 @@ const AddToy = () => {
                     </label>
                     <div className="flex">
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <MdInsertPhoto className="text-gray-400 text-lg"></MdInsertPhoto>
+                        <TbStarFilled className="text-gray-400 text-lg"></TbStarFilled>
                       </div>
                       <input
-                        type="text"
-                        value={photoURL}
+                        type="number"
+                        value={rating}
                         onChange={(e) => {
-                          setPhotoURL(e.target.value);
+                          setRating(e.target.value);
                         }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="4.6"
@@ -198,17 +202,16 @@ const AddToy = () => {
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                       {/* <i className="mdi mdi-email-outline text-gray-400 text-lg" /> */}
-                      <MdOutlineMailOutline className="text-gray-400 text-lg"></MdOutlineMailOutline>
+                      <MdDescription className="text-gray-400 text-lg"></MdDescription>
                     </div>
-                    <textarea 
+                    <textarea
                       type="email"
-                      value={email}
+                      value={description}
                       onChange={(e) => {
-                        setEmail(e.target.value);
+                        setDescription(e.target.value);
                       }}
-                      className="w-full h-24 -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                      placeholder="Write toy details"
-                    ></textarea>
+                      className="w-full resize-none h-24 -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      placeholder="Write toy details"></textarea>
                   </div>
                 </div>
               </div>
