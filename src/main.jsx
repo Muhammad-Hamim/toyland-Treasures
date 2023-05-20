@@ -48,7 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/updatetoy/:id",
-        element: <UpdateToy></UpdateToy>,
+        element: (
+          <PrivateRoute>
+            <UpdateToy></UpdateToy>
+          </PrivateRoute>
+        ),
         loader: ({ params }) => {
           return fetch(
             `https://toyland-treasures-server.vercel.app/toys/${params.id}`
@@ -57,7 +61,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewtoy/:id",
-        element: <ToyDetails></ToyDetails>,
+        element: (
+          <PrivateRoute>
+            <ToyDetails></ToyDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) => {
           return fetch(
             `https://toyland-treasures-server.vercel.app/toys/${params.id}`

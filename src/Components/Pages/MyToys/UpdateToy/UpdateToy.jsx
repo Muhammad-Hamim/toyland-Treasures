@@ -22,15 +22,28 @@ const UpdateToy = () => {
     rating,
     description,
   } = toy;
-  const [FtoyName, setFToyName] = useState("");
-  const [FtoyPhoto, setFToyPhoto] = useState("");
-  const [Fcategory, setFCategory] = useState("");
-  const [Fprice, setFPrice] = useState("");
-  const [Favailability, setFAvailability] = useState("");
-  const [Frating, setFRating] = useState("");
-  const [Fdescription, setFDescription] = useState("");
   const handleUpdate = (event) => {
-    event.preventDefault;
+    event.preventDefault();
+    const form = event.target;
+    const toyName = form.toyName.value;
+    const toyPhoto = form.toyPhoto.value;
+    const price = form.price.value;
+    const category = form.category.value;
+    const availability = form.availability.value;
+    const rating = form.rating.value;
+    const description = form.description.value;
+    const updateToyInfo = {
+      toyName,
+      toyPhoto,
+      price,
+      sellerEmail,
+      sellerName,
+      category,
+      availability,
+      rating,
+      description
+    }
+    console.log(updateToyInfo);
   };
   return (
     <div>
@@ -68,10 +81,8 @@ const UpdateToy = () => {
                         </div>
                         <input
                           type="text"
-                          value={FtoyName}
-                          onChange={(e) => {
-                            setFToyName(e.target.value);
-                          }}
+                          defaultValue={toyName}
+                          name="toyName"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                           placeholder="Iron man suit"
                         />
@@ -91,10 +102,8 @@ const UpdateToy = () => {
                         </div>
                         <input
                           type="text"
-                          value={FtoyPhoto}
-                          onChange={(e) => {
-                            setFToyPhoto(e.target.value);
-                          }}
+                          defaultValue={toyPhoto}
+                          name="toyPhoto"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                           placeholder="https://i.ibb.co/mDRj0YS/avater.jpg"
                         />
@@ -119,10 +128,8 @@ const UpdateToy = () => {
                         </div>
                         <input
                           type="text"
-                          value={Fcategory}
-                          onChange={(e) => {
-                            setFCategory(e.target.value);
-                          }}
+                          defaultValue={category}
+                          name="category"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                           placeholder="Iron man"
                         />
@@ -142,10 +149,8 @@ const UpdateToy = () => {
                         </div>
                         <input
                           type="number"
-                          value={Fprice}
-                          onChange={(e) => {
-                            setFPrice(e.target.value);
-                          }}
+                          defaultValue={price}
+                          name="price"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                           placeholder="73"
                         />
@@ -170,10 +175,8 @@ const UpdateToy = () => {
                         </div>
                         <input
                           type="number"
-                          value={Favailability}
-                          onChange={(e) => {
-                            setFAvailability(e.target.value);
-                          }}
+                          defaultValue={availability}
+                          name="availability"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                           placeholder="267"
                         />
@@ -192,13 +195,11 @@ const UpdateToy = () => {
                           <TbStarFilled className="text-gray-400 text-lg"></TbStarFilled>
                         </div>
                         <input
-                          type="number"
-                          value={Frating}
-                          onChange={(e) => {
-                            setFRating(e.target.value);
-                          }}
+                          type="text"
+                          defaultValue={rating}
+                          name="rating"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                          placeholder="4.6"
+                          placeholder="4"
                         />
                       </div>
                     </div>
@@ -219,10 +220,8 @@ const UpdateToy = () => {
                       </div>
                       <textarea
                         type="email"
-                        value={Fdescription}
-                        onChange={(e) => {
-                          setFDescription(e.target.value);
-                        }}
+                        defaultValue={description}
+                        name="description"
                         className="w-full resize-none h-24 -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="Write toy details"></textarea>
                     </div>
