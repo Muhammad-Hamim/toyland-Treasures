@@ -9,9 +9,11 @@ import {
 } from "react-icons/md";
 import { TbCategory2, TbStarFilled } from "react-icons/tb";
 import { HiCurrencyDollar } from "react-icons/hi";
+import Swal from "sweetalert2";
 const UpdateToy = () => {
   const toy = useLoaderData();
   const {
+    _id,
     toyName,
     toyPhoto,
     price,
@@ -41,9 +43,27 @@ const UpdateToy = () => {
       category,
       availability,
       rating,
-      description
-    }
-    console.log(updateToyInfo);
+      description,
+    };
+    fetch(`https://toyland-treasures-server.vercel.app/toys/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateToyInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "You have successfully updated toy info",
+            icon: "success",
+            confirmButtonText: "Info Updated",
+          });
+        }
+      });
   };
   return (
     <div>
