@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import ToyData from "./ToyData";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,43 @@ const MyToys = () => {
         setToys(data);
       });
   }, [url]);
+  console.log(toys);
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(
+            `https://toyland-treasures-server.vercel.app/toys/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
+          const data = await response.json();
+          if (data.deletedCount > 0) {
+            Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+            const remainingToys = toys.filter((toy) => toy._id !== id);
+            setToys(remainingToys);
+          }
+        } catch (error) {
+          console.error(error);
+          Swal.fire(
+            "Error!",
+            "An error occurred while deleting the toy.",
+            "error"
+          );
+        }
+      }
+    });
+  };
   return (
     <div className="w-full max-w-screen min-h-screen bg-[#eff3f8] flex items-start justify-center px-5 py-5">
       <div className="overflow-x-auto shadow-md sm:rounded-lg w-full">
@@ -41,7 +79,12 @@ const MyToys = () => {
           </thead>
           <tbody className="items-center">
             {toys.map((toyData) => {
-              return <ToyData key={toyData._id} toyData={toyData}></ToyData>;
+              return (
+                <ToyData
+                  key={toyData._id}
+                  handleDelete={handleDelete}
+                  toyData={toyData}></ToyData>
+              );
             })}
           </tbody>
         </table>

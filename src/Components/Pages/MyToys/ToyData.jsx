@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-const ToyData = ({ toyData }) => {
-  const { _id,toyPhoto, toyName, price, category, rating } = toyData;
+const ToyData = ({ toyData, handleDelete }) => {
+  const { _id, toyPhoto, toyName, price, category, rating } = toyData;
   return (
     <tr className="bg-white border-b hover:bg-gray-50 ">
       <td className="px-6 py-4" scope="row">
@@ -24,7 +23,11 @@ const ToyData = ({ toyData }) => {
             Edit
           </button>
         </Link>
-        <button className="font-medium text-red-600 dark:text-red-500 hover:underline">
+        <button
+          onClick={() => {
+            handleDelete(_id);
+          }}
+          className="font-medium text-red-600 dark:text-red-500 hover:underline">
           Remove
         </button>
       </td>
