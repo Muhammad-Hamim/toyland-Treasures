@@ -17,8 +17,8 @@ const UpdateToy = () => {
     toyName,
     toyPhoto,
     price,
-    sellerName,
     sellerEmail,
+    sellerName,
     category,
     availability,
     rating,
@@ -37,15 +37,15 @@ const UpdateToy = () => {
     const updateToyInfo = {
       toyName,
       toyPhoto,
-      price,
       sellerEmail,
       sellerName,
+      price,
       category,
       availability,
       rating,
       description,
     };
-    fetch(`https://toyland-treasures-server.vercel.app/toys/${_id}`, {
+    fetch(`toyland-treasures-server.vercel.app/toys/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -36,7 +36,7 @@ const AddToy = () => {
       description,
     };
     console.log(toys);
-    fetch("http://localhost:5000/toys", {
+    fetch("https://toyland-treasures-server.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
