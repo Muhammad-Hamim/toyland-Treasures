@@ -8,12 +8,12 @@ const GalleryCard = ({ gallery }) => {
   const { image, toyName, description } = gallery;
   useEffect(() => {
     AOS.init({
-      duration: 800, // Animation duration (in milliseconds)
+      duration: 300, // Animation duration (in milliseconds)
     });
   }, []);
 
   return (
-    <div data-aos="fade-up" data-aos-duration="3000">
+    <div data-aos="fade-up" data-aos-duration="1500">
       <div className="flex flex-col justify-center items-center my-8">
         <div
           style={{

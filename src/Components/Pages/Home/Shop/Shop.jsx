@@ -24,7 +24,7 @@ const Shop = () => {
         {uniqueCategory.map((category) => {
           const matchToy = toy.filter((match) => match.category == category);
           return (
-            <TabPanel header={category} >
+            <TabPanel header={category} key={category} >
               <div className="grid md:grid-cols-3 gap-10">
                 {matchToy.map((toyCard) => {
                   return <ShopCard key={toyCard._id} toy={toyCard}></ShopCard>;

@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdbootstrap/react-testimonial-slider": "^1.0.0",
     "aos": "^2.3.4",
     "daisyui": "^2.51.6",
     "firebase": "^9.22.0",
     "localforage": "^1.10.0",
+    "lottie-react": "^2.4.0",
     "match-sorter": "^6.3.1",
     "primereact": "^9.4.0",
     "react": "^18.2.0",

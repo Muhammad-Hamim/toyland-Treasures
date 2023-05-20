@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MdOutlineLockOpen, MdOutlineMailOutline } from "react-icons/md";
 import { AuthContext } from "../../Providers/AuthProvider";
 // import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { HiEyeSlash, HiEye } from "react-icons/hi2";
 import useTitle from "../../../hooks/useTitle";
+import "aos/dist/aos.css";
 
 const Login = () => {
   useTitle("Login");
@@ -60,7 +61,10 @@ const Login = () => {
         className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
         style={{ maxWidth: 1000 }}>
         <div className="md:flex w-full">
-          <div className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">
+          <div
+            className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-center">
             <svg
               id="a87032b8-5b37-4b7e-a4d9-4dbfbe394641"
               data-name="Layer 1"
@@ -264,7 +268,10 @@ const Login = () => {
               />
             </svg>
           </div>
-          <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
+          <div
+            className="w-full md:w-1/2 py-10 px-5 md:px-10"
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center">
             <div className="p-8">
               <p className="text-center text-sm text-gray-400 font-light">
                 Sign in with

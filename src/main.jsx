@@ -13,11 +13,14 @@ import MyToys from "./Components/Pages/MyToys/MyToys";
 import ToyDetails from "./Components/Pages/Home/Shop/ToyDetails";
 import UpdateToy from "./Components/Pages/MyToys/UpdateToy/UpdateToy";
 import AllToys from "./Components/Pages/AllToys/AllToys";
+import NotFound from "./Components/Pages/NotFound/NotFound";
+import AddTestimonial from "./Components/Pages/Home/Testimonials/AddTestimonial";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
@@ -32,7 +35,7 @@ const router = createBrowserRouter([
         element: <Registration></Registration>,
       },
       {
-        path: '/alltoys', 
+        path: "/alltoys",
         element: <AllToys></AllToys>,
       },
       {
@@ -76,6 +79,10 @@ const router = createBrowserRouter([
             `https://toyland-treasures-server.vercel.app/toys/${params.id}`
           );
         },
+      },
+      {
+        path: "/addtestimonial",
+        element: <AddTestimonial></AddTestimonial>,
       },
     ],
   },

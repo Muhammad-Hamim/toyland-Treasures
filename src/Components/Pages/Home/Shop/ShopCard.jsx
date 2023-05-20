@@ -7,7 +7,7 @@ import { Rating } from "primereact/rating";
 const ShopCard = ({ toy }) => {
   useEffect(() => {
     AOS.init({
-      duration: 800, // Animation duration (in milliseconds)
+      duration: 600, // Animation duration (in milliseconds)
     });
   }, []);
   const { _id, toyPhoto, toyName, price, rating } = toy;
@@ -17,7 +17,7 @@ const ShopCard = ({ toy }) => {
       data-aos="fade-up"
       data-aos-anchor-placement="top-center">
       <img
-        className="rounded-t-lg h-[250px] md:h-[374px] bg-cover bg-center"
+        className="rounded-t-lg w-full h-[250px] md:h-[374px] bg-cover bg-center"
         src={toyPhoto}
         alt=""
       />

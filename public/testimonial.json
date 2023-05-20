@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "William Taylor",
+    "position": "Parent",
+    "quote": "I can't say enough good things about this website! The toys are not only entertaining but also promote learning and development. It's a one-stop-shop for all our toy needs.",
+    "photoUrl": "https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=881&q=80"
+  },
+  {
+    "id": 2,
+    "name": "John Smith",
+    "position": "Parent",
+    "quote": "As a parent, I am amazed by the quality and variety of toys available on this website. My kids absolutely love them!",
+    "photoUrl": "https://images.unsplash.com/photo-1507081323647-4d250478b919?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Mike Anderson",
+    "position": "Toy Collector",
+    "quote": "I've been collecting toys for years, and this website has the most impressive selection I've ever seen. It's a treasure trove for any toy enthusiast!",
+    "photoUrl": "https://images.unsplash.com/photo-1520975661595-6453be3f7070?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+  },
+  {
+    "id": 4,
+    "name": "David Wright",
+    "position": "Game Developer",
+    "quote": "As a game developer, I appreciate the attention to detail in the toy designs on this website. They inspire creativity and imagination, just like the games I create.",
+    "photoUrl": "https://images.unsplash.com/photo-1498609458988-7b2c70d9213a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "id": 5,
+    "name": "Robert Johnson",
+    "position": "Toy Enthusiast",
+    "quote": "Being a toy collector, I've visited numerous toy stores, but this website stands out from the rest. The collection is vast, the prices are competitive, and the customer service is top-notch.",
+    "photoUrl": "https://images.unsplash.com/photo-1514929781313-76fcbb2136b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+  },
+  {
+    "id": 6,
+    "name": "Lucas Thompson",
+    "position": "Proud Grandparent",
+    "quote": "Seeing the joy on my grandkids' faces when they receive toys from this website is priceless. The quality is excellent, and the toys are perfect for creating beautiful childhood memories.",
+    "photoUrl": "https://images.unsplash.com/photo-1529688530647-93a6e1916f5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80"
+  },
+  {
+    "id": 7,
+    "name": "James Davis",
+    "position": "Elementary School Teacher",
+    "quote": "The toys available on this website have been a fantastic addition to my classroom. They engage my students and make learning enjoyable. Highly recommended!",
+    "photoUrl": "https://images.unsplash.com/photo-1509305717900-84f40e786d82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=768&q=80"
+  },
+  {
+    "id": 8,
+    "name": "Daniel Brown",
+    "position": "Parent",
+    "quote": "I stumbled upon this website while looking for toys for my kids, and I'm glad I did. The toys are of excellent quality, safe, and provide endless entertainment.",
+    "photoUrl": "https://images.unsplash.com/photo-1575042124694-d6fbe9082142?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=708&q=80"
+  },
+  {
+    "id": 9,
+    "name": "Michael Wilson",
+    "position": "Child Psychologist",
+    "quote": "Toys are essential for a child's development, and the ones available on this website are carefully selected to nurture various skills. I highly recommend them!",
+    "photoUrl": "https://images.unsplash.com/flagged/photo-1573603867003-89f5fd7a7576?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=746&q=80"
+  },
+  {
+    "id": 10,
+    "name": "Christopher Lee",
+    "position": "Parent Blogger",
+    "quote": "I write about parenting and children's products, and I must say, this website has a remarkable range of toys. They are not only fun but also educational and engaging.",
+    "photoUrl": "https://images.unsplash.com/photo-1558273665-5c494fee2f7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=694&q=80"
+  }
+]
