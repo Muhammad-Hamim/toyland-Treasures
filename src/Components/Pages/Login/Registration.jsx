@@ -5,6 +5,7 @@ import {
   MdOutlineMailOutline,
   MdAccountBox,
 } from "react-icons/md";
+import { HiEyeSlash, HiEye } from "react-icons/hi2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
@@ -15,10 +16,11 @@ const Registration = () => {
   const [photoURL, setPhotoURL] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  
+
   const handleRegister = (event) => {
     event.preventDefault();
     setErrorMessage("");
@@ -357,13 +359,13 @@ const Registration = () => {
                     <label htmlFor="" className="text-xs font-semibold px-1">
                       Password
                     </label>
-                    <div className="flex">
+                    <div className="flex relative">
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                         {/* <i className="mdi mdi-lock-outline text-gray-400 text-lg" /> */}
                         <MdOutlineLockOpen className="text-gray-400 text-lg"></MdOutlineLockOpen>
                       </div>
                       <input
-                        type="password"
+                        type={showPass ? "text" : "password"}
                         value={password}
                         onChange={(e) => {
                           setPassword(e.target.value);
@@ -371,6 +373,21 @@ const Registration = () => {
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
                       />
+                      <label className="text-2xl absolute top-1/2 -translate-y-1/2 bottom-0 right-4 cursor-pointer">
+                        {showPass ? (
+                          <HiEye
+                            onClick={() => {
+                              setShowPass(!showPass);
+                            }}
+                          />
+                        ) : (
+                          <HiEyeSlash
+                            onClick={() => {
+                              setShowPass(!showPass);
+                            }}
+                          />
+                        )}
+                      </label>
                     </div>
                   </div>
                 </div>

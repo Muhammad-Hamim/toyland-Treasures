@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
+import { Rating } from "primereact/rating";
 
 const ShopCard = ({ toy }) => {
   useEffect(() => {
@@ -8,25 +10,32 @@ const ShopCard = ({ toy }) => {
       duration: 800, // Animation duration (in milliseconds)
     });
   }, []);
-
-  const { toyPhoto, toyName, price, rating } = toy;
+  const { _id, toyPhoto, toyName, price, rating } = toy;
   return (
     <div
       className="w-full relative bg-white border border-gray-200 rounded-lg shadow"
       data-aos="fade-up"
       data-aos-anchor-placement="top-center">
-      <img className="rounded-t-lg h-[250px] md:h-[374px] bg-cover bg-center" src={toyPhoto} alt="" />
+      <img
+        className="rounded-t-lg h-[250px] md:h-[374px] bg-cover bg-center"
+        src={toyPhoto}
+        alt=""
+      />
       <div className="p-5 absolute left-1/2 rounded-lg -translate-x-1/2 -bottom-28 shadow-2xl w-10/12 bg-white">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
           {toyName}
         </h5>
-        <p className="mb-3 font-normal text-gray-700 ">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+        <p className="mb-3 text-2xl font-normal text-gray-700 flex space-x-2 items-center">
+          <span>{rating}</span><Rating value={rating} readOnly cancel={false} />
         </p>
-        <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800  focus:outline-none">
-          View details
-        </button>
+        <div className="flex items-center justify-between">
+          <span className="text-3xl font-bold text-gray-900">${price}</span>
+          <Link to={`viewtoy/${_id}`}>
+            <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-indigo-800  focus:outline-none">
+              View details
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

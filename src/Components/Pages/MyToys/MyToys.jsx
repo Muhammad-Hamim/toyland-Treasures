@@ -26,25 +26,23 @@ const MyToys = () => {
                 Product name
               </th>
               <th scope="col" className="px-6 py-3">
-                Color
-              </th>
-              <th scope="col" className="px-6 py-3">
                 Category
               </th>
               <th scope="col" className="px-6 py-3">
                 Price
               </th>
               <th scope="col" className="px-6 py-3">
+                Rating
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Action
               </th>
             </tr>
           </thead>
-          <tbody>
-            {
-              toys.map(toyData => {
-                return <ToyData key={toyData._id} toyData={toyData}></ToyData>
-              })
-            }
+          <tbody className="items-center">
+            {toys.map((toyData) => {
+              return <ToyData key={toyData._id} toyData={toyData}></ToyData>;
+            })}
           </tbody>
         </table>
       </div>

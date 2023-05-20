@@ -10,6 +10,8 @@ import AuthProvider from "./Components/Providers/AuthProvider.jsx";
 import AddToy from "./Components/Pages/AddToy/AddToy";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import MyToys from "./Components/Pages/MyToys/MyToys";
+import ToyDetails from "./Components/Pages/Home/Shop/ToyDetails";
+import UpdateToy from "./Components/Pages/MyToys/UpdateToy/UpdateToy";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
         element: <Registration></Registration>,
       },
       {
-        path: "addtoy",
+        path: "/addtoy",
         element: (
           <PrivateRoute>
             <AddToy></AddToy>
@@ -37,12 +39,30 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "mytoys",
+        path: "/mytoys",
         element: (
           <PrivateRoute>
             <MyToys></MyToys>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/updatetoy/:id",
+        element: <UpdateToy></UpdateToy>,
+        loader: ({ params }) => {
+          return fetch(
+            `https://toyland-treasures-server.vercel.app/toys/${params.id}`
+          );
+        },
+      },
+      {
+        path: "/viewtoy/:id",
+        element: <ToyDetails></ToyDetails>,
+        loader: ({ params }) => {
+          return fetch(
+            `https://toyland-treasures-server.vercel.app/toys/${params.id}`
+          );
+        },
       },
     ],
   },
