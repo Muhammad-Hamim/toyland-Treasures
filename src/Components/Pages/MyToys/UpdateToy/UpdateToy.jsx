@@ -45,7 +45,7 @@ const UpdateToy = () => {
       rating,
       description,
     };
-    fetch(`toyland-treasures-server.vercel.app/toys/${_id}`, {
+    fetch(`https://toyland-treasures-server.vercel.app/toys/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
