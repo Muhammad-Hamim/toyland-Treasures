@@ -8,8 +8,10 @@ import {
 import { HiEyeSlash, HiEye } from "react-icons/hi2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import useTitle from "../../../hooks/useTitle";
 
 const Registration = () => {
+  useTitle("Registration");
   const { registerUser, setProfile, logOut } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [name, setName] = useState("");

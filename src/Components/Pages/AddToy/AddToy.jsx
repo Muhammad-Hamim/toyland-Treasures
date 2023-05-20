@@ -10,6 +10,7 @@ import { TbCategory2, TbStarFilled } from "react-icons/tb";
 import { HiCurrencyDollar } from "react-icons/hi";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../../hooks/useTitle";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
@@ -20,6 +21,7 @@ const AddToy = () => {
   const [availability, setAvailability] = useState("");
   const [rating, setRating] = useState("");
   const [description, setDescription] = useState("");
+  useTitle('Add a toy');
   const handleAdd = (event) => {
     event.preventDefault();
     const sellerName = user ? user.displayName : "Seller name not found";

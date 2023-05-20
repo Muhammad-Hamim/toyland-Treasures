@@ -4,8 +4,10 @@ import { MdOutlineLockOpen, MdOutlineMailOutline } from "react-icons/md";
 import { AuthContext } from "../../Providers/AuthProvider";
 // import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { HiEyeSlash, HiEye } from "react-icons/hi2";
+import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const { loginUser, githubRegister, googleRegister } = useContext(AuthContext);
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);

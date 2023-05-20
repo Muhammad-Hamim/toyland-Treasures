@@ -10,7 +10,9 @@ import {
 import { TbCategory2, TbStarFilled } from "react-icons/tb";
 import { HiCurrencyDollar } from "react-icons/hi";
 import Swal from "sweetalert2";
+import useTitle from "../../../../hooks/useTitle";
 const UpdateToy = () => {
+  useTitle('Update toy info')
   const toy = useLoaderData();
   const {
     _id,

@@ -1,11 +1,8 @@
-import React from 'react';
-
+import React from "react";
+import useTitle from "../../../hooks/useTitle.js";
 const AllToys = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+  useTitle("All toys");
+  return <div></div>;
 };
 
 export default AllToys;
