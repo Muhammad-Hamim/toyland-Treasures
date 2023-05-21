@@ -164,6 +164,15 @@ const AllToys = () => {
               })}
             </tbody>
           </table>
+          {toys.length > 20 && (
+            <div className="flex justify-center py-6 w-full">
+              <button
+                type="button"
+                className="text-white bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">
+                show all
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <h2 className="text-red-500 text-center font-black text-2xl md:text-5xl lg:text-7xl">
