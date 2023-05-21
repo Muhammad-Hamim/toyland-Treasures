@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   MdInsertPhoto,
   MdOutlineLockOpen,
@@ -10,9 +10,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useTitle from "../../../hooks/useTitle";
 import "aos/dist/aos.css";
+import AOS from 'aos'
 
 const Registration = () => {
   useTitle("Registration");
+   useEffect(() => {
+     AOS.init({
+       duration: 300, // Animation duration (in milliseconds)
+     });
+   }, []);
   const { registerUser, setProfile, logOut } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [name, setName] = useState("");

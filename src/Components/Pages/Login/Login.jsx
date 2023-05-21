@@ -6,9 +6,15 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { HiEyeSlash, HiEye } from "react-icons/hi2";
 import useTitle from "../../../hooks/useTitle";
 import "aos/dist/aos.css";
+import AOS from 'aos'
 
 const Login = () => {
   useTitle("Login");
+   useEffect(() => {
+     AOS.init({
+       duration: 300, // Animation duration (in milliseconds)
+     });
+   }, []);
   const { loginUser, githubRegister, googleRegister } = useContext(AuthContext);
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);

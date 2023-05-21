@@ -1,20 +1,46 @@
 import React, { useContext, useEffect, useState } from "react";
 import useTitle from "../../../hooks/useTitle";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { FaAppStoreIos } from "react-icons/fa";
 import AllToyData from "./AllToyData";
 import Swal from "sweetalert2";
+import axios from "axios";
 import { SelectButton } from "primereact/selectbutton";
+import { Dna } from "react-loader-spinner";
 
 const AllToys = () => {
   useTitle("All toys");
   const { user } = useContext(AuthContext);
-
+  const [loading, setLoading] = useState(false);
   const [toys, setToys] = useState([]);
   const options = ["Ascending", "Descending"];
   const [value, setValue] = useState(options[0]);
 
   useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        "https://toyland-treasures-server.vercel.app/toys",
+        {
+          params: {
+            sortField: "price",
+            sortOrder:
+              value.toLowerCase() === "descending" ? "descending" : "ascending",
+          },
+        }
+      );
+      setToys(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const handleSort = () => {
+    setLoading(true);
     const sortQuery =
       value.toLowerCase() === "descending" ? "&sortOrder=descending" : "";
     fetch(
@@ -24,45 +50,24 @@ const AllToys = () => {
       .then((data) => {
         console.log(data);
         setToys(data);
+        setLoading(false);
       });
-  }, [user, value]);
-
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          const response = await fetch(
-            `https://toyland-treasures-server.vercel.app/toys/${id}`,
-            {
-              method: "DELETE",
-            }
-          );
-          const data = await response.json();
-          if (data.deletedCount > 0) {
-            Swal.fire("Deleted!", "Your toy has been deleted.", "success");
-            const remainingToys = toys.filter((toy) => toy._id !== id);
-            setToys(remainingToys);
-          }
-        } catch (error) {
-          console.error(error);
-          Swal.fire(
-            "Error!",
-            "An error occurred while deleting the toy.",
-            "error"
-          );
-        }
-      }
-    });
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[90vh] z-50">
+        <Dna
+          visible={true}
+          height="120"
+          width="120"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  }
   return (
     <div className="w-full max-w-screen min-h-screen bg-[#eff3f8] px-5 py-5">
       {/* search and sort */}
@@ -106,6 +111,7 @@ const AllToys = () => {
         </div>
         <div className="card flex justify-content-center">
           <SelectButton
+            onClick={handleSort}
             value={value}
             onChange={(e) => setValue(e.value)}
             options={options}
@@ -143,10 +149,7 @@ const AllToys = () => {
             <tbody className="items-center">
               {toys.map((toyData) => {
                 return (
-                  <AllToyData
-                    key={toyData._id}
-                    handleDelete={handleDelete}
-                    toyData={toyData}></AllToyData>
+                  <AllToyData key={toyData._id} toyData={toyData}></AllToyData>
                 );
               })}
             </tbody>

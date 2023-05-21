@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const AllToyData = ({ toyData, handleDelete }) => {
+const AllToyData = ({ toyData }) => {
   const { _id, toyPhoto, toyName, price, category, rating, sellerName } =
     toyData;
   return (
@@ -24,13 +24,12 @@ const AllToyData = ({ toyData, handleDelete }) => {
       <td className="px-6 py-4">{rating}</td>
 
       <td className="px-6 py-4 space-x-3">
-        {/* <Link to={`/viewtoy/${_id}`}> */}
+        <Link to={`/viewtoy/${_id}`}>
         <button
-          onClick={handleDelete}
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-          Delete
+          View details
         </button>
-        {/* </Link> */}
+        </Link>
       </td>
     </tr>
   );
