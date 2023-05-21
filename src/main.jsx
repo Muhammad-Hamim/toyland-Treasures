@@ -16,6 +16,7 @@ import AllToys from "./Components/Pages/AllToys/AllToys";
 import NotFound from "./Components/Pages/NotFound/NotFound";
 import AddTestimonial from "./Components/Pages/Home/Testimonials/AddTestimonial";
 import { ToastContainer } from "react-toastify";
+import Blog from "./Components/Pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
         path: "/addtestimonial",
         element: <AddTestimonial></AddTestimonial>,
       },
+      {
+        path: '/blog',
+        element: <Blog></Blog>,
+      }
     ],
   },
 ]);

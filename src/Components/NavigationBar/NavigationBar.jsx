@@ -51,7 +51,7 @@ const NavigationBar = () => {
           Add A Toy
         </li>
       </NavLink>
-      <NavLink className={`text-indigo-500`} to="/login">
+      <NavLink className={`text-indigo-500`} to="/blog">
         <li
           className={`${
             visible && "py-3 border-b-2 text-center font-bold border-indigo-300"
