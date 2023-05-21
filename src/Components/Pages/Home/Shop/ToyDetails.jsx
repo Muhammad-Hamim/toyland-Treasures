@@ -2,8 +2,10 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import useTitle from "../../../../hooks/useTitle";
 
 const ToyDetails = () => {
+  useTitle('Toy details')
   const toy = useLoaderData();
   console.log(toy);
   const {
