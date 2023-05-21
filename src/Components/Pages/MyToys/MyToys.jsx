@@ -3,21 +3,43 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import ToyData from "./ToyData";
 import Swal from "sweetalert2";
 import useTitle from "../../../hooks/useTitle.js";
+import axios from "axios";
+import { SelectButton } from "primereact/selectbutton";
+import { Dna } from "react-loader-spinner";
 
 const MyToys = () => {
   useTitle("My toys");
   const { user } = useContext(AuthContext);
-  
   const url = `https://toyland-treasures-server.vercel.app/toys?email=${user?.email}`;
+  const [loading, setLoading] = useState(false);
   const [toys, setToys] = useState([]);
+  const [options, setOptions] = useState(["Ascending", "Descending"]);
+  const [value, setValue] = useState(options[0]);
+  const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setToys(data);
-      });
+    fetchData();
   }, [url]);
-  console.log(toys);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(url, {
+        params: {
+          sortField: "price",
+          sortOrder:
+            value.toLowerCase() === "descending" ? "descending" : "ascending",
+          toyName: searchQuery,
+        },
+      });
+      setToys(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
+  };
+
   const handleDelete = (id) => {
     console.log(id);
     Swal.fire({
@@ -54,8 +76,30 @@ const MyToys = () => {
       }
     });
   };
+
+  const handleSort = () => {
+    fetchData();
+  };
+
+  const handleSearch = () => {
+    fetchData();
+  };
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[90vh] z-50">
+        <Dna
+          visible={true}
+          height="120"
+          width="120"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  }
   return (
-    <div className="w-full max-w-screen min-h-screen bg-[#eff3f8] flex items-start justify-center px-5 py-5">
+    <div className="w-full max-w-screen min-h-screen bg-[#eff3f8] px-5 py-5">
       {/* search and sort */}
       <div className="md:flex justify-between items-center space-y-5 md:space-y-0 w-full py-6">
         <div className="md:w-1/3">
