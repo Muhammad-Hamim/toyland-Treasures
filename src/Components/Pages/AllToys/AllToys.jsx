@@ -23,14 +23,17 @@ const AllToys = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/toys", {
-        params: {
-          sortField: "price",
-          sortOrder:
-            value.toLowerCase() === "descending" ? "descending" : "ascending",
-          toyName: searchQuery,
-        },
-      });
+      const response = await axios.get(
+        "https://toyland-treasures-server.vercel.app/toys",
+        {
+          params: {
+            sortField: "price",
+            sortOrder:
+              value.toLowerCase() === "descending" ? "descending" : "ascending",
+            toyName: searchQuery,
+          },
+        }
+      );
       setToys(response.data);
       setLoading(false);
     } catch (error) {
@@ -42,7 +45,9 @@ const AllToys = () => {
     setLoading(true);
     const sortQuery =
       value.toLowerCase() === "descending" ? "&sortOrder=descending" : "";
-    fetch(`http://localhost:5000/toys?sortField=price${sortQuery}`)
+    fetch(
+      `https://toyland-treasures-server.vercel.app/toys?sortField=price${sortQuery}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -122,6 +127,7 @@ const AllToys = () => {
           />
         </div>
       </div>
+      {/* search and sort */}
       {!user ? (
         <div className="overflow-x-auto shadow-md sm:rounded-lg w-full">
           <table className="w-full text-sm text-left text-gray-500 ">
