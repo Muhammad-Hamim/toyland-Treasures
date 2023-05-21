@@ -11,7 +11,7 @@ const ShopCard = ({ toy }) => {
   const { user } = useContext(AuthContext);
   useEffect(() => {
     AOS.init({
-      duration: 300, // Animation duration (in milliseconds)
+      duration: 500, // Animation duration (in milliseconds)
     });
   }, []);
   const error = () => toast.error("You have to log in first to view details!");
