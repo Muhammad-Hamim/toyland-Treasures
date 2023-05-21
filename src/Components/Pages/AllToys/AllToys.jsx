@@ -14,6 +14,7 @@ const AllToys = () => {
   const [toys, setToys] = useState([]);
   const options = ["Ascending", "Descending"];
   const [value, setValue] = useState(options[0]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -22,16 +23,14 @@ const AllToys = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        "https://toyland-treasures-server.vercel.app/toys",
-        {
-          params: {
-            sortField: "price",
-            sortOrder:
-              value.toLowerCase() === "descending" ? "descending" : "ascending",
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:5000/toys", {
+        params: {
+          sortField: "price",
+          sortOrder:
+            value.toLowerCase() === "descending" ? "descending" : "ascending",
+          toyName: searchQuery,
+        },
+      });
       setToys(response.data);
       setLoading(false);
     } catch (error) {
@@ -43,15 +42,17 @@ const AllToys = () => {
     setLoading(true);
     const sortQuery =
       value.toLowerCase() === "descending" ? "&sortOrder=descending" : "";
-    fetch(
-      `https://toyland-treasures-server.vercel.app/toys?sortField=price${sortQuery}`
-    )
+    fetch(`http://localhost:5000/toys?sortField=price${sortQuery}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setToys(data);
         setLoading(false);
       });
+  };
+
+  const handleSearch = () => {
+    fetchData();
   };
 
   if (loading) {
@@ -71,7 +72,7 @@ const AllToys = () => {
   return (
     <div className="w-full max-w-screen min-h-screen bg-[#eff3f8] px-5 py-5">
       {/* search and sort */}
-      <div className="flex justify-between items-center w-full py-6">
+      <div className="md:flex justify-between items-center space-y-5 md:space-y-0 w-full py-6">
         <div className="md:w-1/3">
           <label
             htmlFor="default-search"
@@ -100,11 +101,14 @@ const AllToys = () => {
               id="default-search"
               className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 outline-none"
               placeholder="Search Mockups, Logos..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               required=""
             />
             <button
               type="submit"
-              className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+              className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+              onClick={handleSearch}>
               Search
             </button>
           </div>
