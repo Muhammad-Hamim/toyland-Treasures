@@ -35,7 +35,7 @@ const AddToy = () => {
       sellerName,
       sellerEmail,
       category,
-      price,
+      price: parseInt(price),
       availability,
       rating,
       description,

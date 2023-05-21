@@ -41,7 +41,6 @@ const MyToys = () => {
   };
 
   const handleDelete = (id) => {
-    setLoading(true)
     console.log(id);
     Swal.fire({
       title: "Are you sure?",
@@ -52,6 +51,7 @@ const MyToys = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
+      setLoading(true);
       if (result.isConfirmed) {
         try {
           const response = await fetch(
@@ -65,6 +65,7 @@ const MyToys = () => {
             Swal.fire("Deleted!", "Your toy has been deleted.", "success");
             const remainingToys = toys.filter((toy) => toy._id !== id);
             setToys(remainingToys);
+            setLoading(false);
           }
         } catch (error) {
           console.error(error);
