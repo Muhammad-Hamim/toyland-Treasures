@@ -22,10 +22,10 @@ const GalleryCard = ({ gallery }) => {
           className="bg-gray-300 h-64 w-full rounded-lg shadow-md object-fill bg-no-repeat bg-cover bg-center"
         />
         <div className="w-56 md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
-          <div className="py-2 text-center font-bold uppercase tracking-wide text-violet-400">
+          <div className="py-2 text-center font-bold uppercase tracking-wide text-indigo-500">
             {toyName}
           </div>
-          <div className="py-2 px-3 bg-violet-400">
+          <div className="py-2 px-3 bg-indigo-500">
             <h1 className="text-gray-800 font-bold text-center">
               {description}
             </h1>

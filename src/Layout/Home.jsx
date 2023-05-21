@@ -5,6 +5,7 @@ import Shop from "../Components/Pages/Home/Shop/Shop";
 import useTitle from "../hooks/useTitle.js";
 import Testimonials from "../Components/Pages/Home/Testimonials/Testimonials";
 import AddTestimonial from "../Components/Pages/Home/Testimonials/AddTestimonial";
+import Contact from "../Components/Pages/Home/Contact/Contact";
 
 const Home = () => {
   useTitle("Home");
@@ -13,8 +14,9 @@ const Home = () => {
       <Banner></Banner>
       <Gallery></Gallery>
       <Testimonials></Testimonials>
-      <Shop></Shop>
       <AddTestimonial ></AddTestimonial>
+      <Shop></Shop>
+      <Contact></Contact>
     </div>
   );
 };

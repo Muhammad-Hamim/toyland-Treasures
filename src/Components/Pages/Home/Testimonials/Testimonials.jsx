@@ -24,6 +24,7 @@ const Testimonials = () => {
               return (
                 <TestimonialCarousel
                   key={testimonial._id}
+                  testimonialData={testimonialData}
                   testimonial={testimonial}></TestimonialCarousel>
               );
             })}

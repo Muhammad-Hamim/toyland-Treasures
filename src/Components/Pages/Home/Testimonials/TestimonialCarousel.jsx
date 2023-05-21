@@ -1,13 +1,18 @@
 import React from "react";
+import "aos/dist/aos.css";
 
-const TestimonialCarousel = ({ testimonial }) => {
+const TestimonialCarousel = ({ testimonial, testimonialData }) => {
   const { id, name, position, quote, photoUrl } = testimonial;
   return (
     <div id={`slide${id}`} className="carousel-item relative w-full">
       <main className="relative z-20 w-full mt-8 md:flex md:items-center xl:mt-12">
-        <div className="absolute w-full bg-indigo-600 -z-10 md:h-96 rounded-2xl" />
+        <div
+          className="absolute w-full bg-indigo-600 -z-10 md:h-96 rounded-2xl"
+          data-aos="fade-up-left"
+        />
         <div className="w-full p-6 bg-indigo-600 md:flex md:items-center rounded-2xl md:bg-transparent md:p-0 lg:px-12 md:justify-evenly">
           <img
+            data-aos="fade-up-right"
             className="h-24 w-24 md:mx-6 rounded-full bg-center bg-cover object-cover shadow-md md:h-[32rem] md:w-80 lg:h-[36rem] lg:w-[26rem] md:rounded-2xl"
             src={photoUrl}
           />
@@ -23,7 +28,7 @@ const TestimonialCarousel = ({ testimonial }) => {
             </p>
             <div className="flex items-center justify-between mt-6 md:justify-start">
               <a
-                href={`#slide${id - 1}`}
+                href={`#slide${id == 1 ? testimonialData.length : id - 1}`}
                 title="left arrow"
                 className="p-2 text-white transition-colors duration-300 border rounded-full rtl:-scale-x-100 hover:bg-blue-400">
                 <svg
@@ -41,7 +46,7 @@ const TestimonialCarousel = ({ testimonial }) => {
                 </svg>
               </a>
               <a
-                href={`#slide${id + 1}`}
+                href={`#slide${id == testimonialData.length ? 1 : id + 1}`}
                 title="right arrow"
                 className="p-2 text-white transition-colors duration-300 border rounded-full rtl:-scale-x-100 md:mx-6 hover:bg-blue-400">
                 <svg
