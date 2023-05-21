@@ -41,6 +41,7 @@ const MyToys = () => {
   };
 
   const handleDelete = (id) => {
+    setLoading(true)
     console.log(id);
     Swal.fire({
       title: "Are you sure?",

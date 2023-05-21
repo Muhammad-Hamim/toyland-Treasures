@@ -37,8 +37,6 @@ const AddTestimonial = () => {
       position,
       quote,
     };
-    console.log(id);
-    console.log(testimonial);
     fetch("https://toyland-treasures-server.vercel.app/testimonials", {
       method: "POST",
       headers: {
@@ -64,7 +62,7 @@ const AddTestimonial = () => {
   };
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-[90vh] z-50">
+      <div className="flex justify-center items-center h-[60vh] z-50">
         <Dna
           visible={true}
           height="120"
