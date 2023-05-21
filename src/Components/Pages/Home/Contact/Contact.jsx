@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "aos/dist/aos.css";
-
+import AOS from 'aos';
 const Contact = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 300, // Animation duration (in milliseconds)
+    });
+  }, []);
   return (
     <div className="py-20 ">
       <section className="bg-gray-100 px-4 md:px-40">

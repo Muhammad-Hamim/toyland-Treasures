@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "aos/dist/aos.css";
+import AOS from 'aos'
 
 const TestimonialCarousel = ({ testimonial, testimonialData }) => {
   const { id, name, position, quote, photoUrl } = testimonial;
+  useEffect(() => {
+    AOS.init({
+      duration: 300, // Animation duration (in milliseconds)
+    });
+  }, []);
   return (
     <div id={`slide${id}`} className="carousel-item relative w-full">
       <main className="relative z-20 w-full mt-8 md:flex md:items-center xl:mt-12">
         <div
           className="absolute w-full bg-indigo-600 -z-10 md:h-96 rounded-2xl"
           data-aos="fade-up-left"
+          data-aos-duration="500"
         />
         <div className="w-full p-6 bg-indigo-600 md:flex md:items-center rounded-2xl md:bg-transparent md:p-0 lg:px-12 md:justify-evenly">
           <img
             data-aos="fade-up-right"
+            data-aos-duration="500"
             className="h-24 w-24 md:mx-6 rounded-full bg-center bg-cover object-cover shadow-md md:h-[32rem] md:w-80 lg:h-[36rem] lg:w-[26rem] md:rounded-2xl"
             src={photoUrl}
           />

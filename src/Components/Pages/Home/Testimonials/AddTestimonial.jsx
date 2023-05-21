@@ -1,17 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  MdInsertPhoto,
-  MdOutlineMailOutline,
-  MdAccountBox,
-  MdShoppingCart,
-  MdDescription,
-} from "react-icons/md";
+import { MdInsertPhoto, MdAccountBox, MdDescription } from "react-icons/md";
 import "aos/dist/aos.css";
-import { TbCategory2, TbStarFilled } from "react-icons/tb";
-import { HiCurrencyDollar } from "react-icons/hi";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import { TbCategory2 } from "react-icons/tb";
 import Swal from "sweetalert2";
 import useTitle from "../../../../hooks/useTitle";
+import AOS from 'aos'
 
 const AddTestimonial = () => {
   const [testimonialData, setTestimonialData] = useState([]);
@@ -27,6 +20,11 @@ const AddTestimonial = () => {
   const [position, setPosition] = useState("");
   const [quote, setQuote] = useState("");
   useTitle("Add testimonial");
+  useEffect(() => {
+    AOS.init({
+      duration: 300, // Animation duration (in milliseconds)
+    });
+  }, []);
   const handleAdd = (event) => {
     event.preventDefault();
     const testimonial = {
@@ -82,7 +80,10 @@ const AddTestimonial = () => {
             </div>
             <form onSubmit={handleAdd}>
               {/* toy name */}
-              <div className="flex -mx-3" data-aos="fade-up-right">
+              <div
+                className="flex -mx-3"
+                data-aos="fade-up-right"
+                data-aos-duration="500">
                 <div className="w-full px-3 mb-5">
                   <label className="text-xs font-semibold px-1">
                     Your name
@@ -107,7 +108,10 @@ const AddTestimonial = () => {
               </div>
               {/* toy name */}
               {/* toy photo */}
-              <div className="flex -mx-3" data-aos="fade-up-left">
+              <div
+                className="flex -mx-3"
+                data-aos="fade-up-left"
+                data-aos-duration="500">
                 <div className="w-full px-3 mb-5">
                   <label htmlFor="" className="text-xs font-semibold px-1">
                     Photo url
@@ -130,7 +134,10 @@ const AddTestimonial = () => {
                 </div>
               </div>
               {/* toy name and photo url */}
-              <div className="flex -mx-3" data-aos="fade-up-right">
+              <div
+                className="flex -mx-3"
+                data-aos="fade-up-right"
+                data-aos-duration="500">
                 <div className="w-full px-3 mb-5">
                   <label className="text-xs font-semibold px-1">Position</label>
                   <div className="flex">
@@ -153,7 +160,10 @@ const AddTestimonial = () => {
               </div>
               {/* category and price */}
               {/* toy details */}
-              <div className="flex -mx-3" data-aos="fade-up-left">
+              <div
+                className="flex -mx-3"
+                data-aos="fade-up-left"
+                data-aos-duration="500">
                 <div className="w-full px-3 mb-5">
                   <label htmlFor="" className="text-xs font-semibold px-1">
                     Message

@@ -66,6 +66,9 @@ const MyToys = () => {
                 Product name
               </th>
               <th scope="col" className="px-6 py-3">
+                Seller name
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Category
               </th>
               <th scope="col" className="px-6 py-3">

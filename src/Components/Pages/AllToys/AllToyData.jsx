@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AllToyData = ({ toyData, handleDelete }) => {
-  const { _id, toyPhoto, toyName, price, category, rating } = toyData;
+  const { _id, toyPhoto, toyName, price, category, rating, sellerName } =
+    toyData;
   return (
     <tr className="bg-white border-b hover:bg-gray-50 ">
       <td className="px-6 py-4" scope="row">
@@ -13,23 +14,23 @@ const AllToyData = ({ toyData, handleDelete }) => {
         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
         {toyName}
       </th>
+      <th
+        scope="row"
+        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        {sellerName}
+      </th>
       <td className="px-6 py-4">{category}</td>
       <td className="px-6 py-4">${price}</td>
       <td className="px-6 py-4">{rating}</td>
 
       <td className="px-6 py-4 space-x-3">
-        <Link to={`/updatetoy/${_id}`}>
-          <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-            Edit
-          </button>
-        </Link>
+        {/* <Link to={`/viewtoy/${_id}`}> */}
         <button
-          onClick={() => {
-            handleDelete(_id);
-          }}
-          className="font-medium text-red-600 dark:text-red-500 hover:underline">
-          Remove
+          onClick={handleDelete}
+          className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+          Delete
         </button>
+        {/* </Link> */}
       </td>
     </tr>
   );

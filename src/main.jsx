@@ -15,6 +15,7 @@ import UpdateToy from "./Components/Pages/MyToys/UpdateToy/UpdateToy";
 import AllToys from "./Components/Pages/AllToys/AllToys";
 import NotFound from "./Components/Pages/NotFound/NotFound";
 import AddTestimonial from "./Components/Pages/Home/Testimonials/AddTestimonial";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -87,10 +88,10 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
+      <ToastContainer />
       <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
   </React.StrictMode>

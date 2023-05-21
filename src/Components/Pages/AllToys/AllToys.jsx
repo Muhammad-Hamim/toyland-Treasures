@@ -1,25 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
 import useTitle from "../../../hooks/useTitle";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Dna, ThreeCircles } from "react-loader-spinner";
+import { FaAppStoreIos } from "react-icons/fa";
 import AllToyData from "./AllToyData";
 import Swal from "sweetalert2";
 import { SelectButton } from "primereact/selectbutton";
 
-
-
 const AllToys = () => {
   useTitle("All toys");
   const { user } = useContext(AuthContext);
+
   const [toys, setToys] = useState([]);
+  const options = ["Ascending", "Descending"];
+  const [value, setValue] = useState(options[0]);
+
   useEffect(() => {
-    fetch("https://toyland-treasures-server.vercel.app/toys")
+    const sortQuery =
+      value.toLowerCase() === "descending" ? "&sortOrder=descending" : "";
+    fetch(
+      `https://toyland-treasures-server.vercel.app/toys?sortField=price${sortQuery}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setToys(data);
       });
-  }, [user]);
+  }, [user, value]);
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -55,8 +62,6 @@ const AllToys = () => {
       }
     });
   };
-  const options = ["Ascending", "Descending"];
-  const [value, setValue] = useState(options[0]);
 
   return (
     <div className="w-full max-w-screen min-h-screen bg-[#eff3f8] px-5 py-5">
@@ -119,6 +124,9 @@ const AllToys = () => {
                   Product name
                 </th>
                 <th scope="col" className="px-6 py-3">
+                  Seller Name
+                </th>
+                <th scope="col" className="px-6 py-3">
                   Category
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -145,7 +153,7 @@ const AllToys = () => {
           </table>
         </div>
       ) : (
-        <h2 className="text-gray-900 text-center font-black text-7xl">
+        <h2 className="text-red-500 text-center font-black text-2xl md:text-5xl lg:text-7xl">
           Data not found. Please log out first to see all toy!
         </h2>
       )}
