@@ -4,10 +4,12 @@ import "aos/dist/aos.css";
 import { TbCategory2 } from "react-icons/tb";
 import Swal from "sweetalert2";
 import useTitle from "../../../../hooks/useTitle";
-import AOS from 'aos'
+import AOS from "aos";
+import { Dna } from "react-loader-spinner";
 
 const AddTestimonial = () => {
   const [testimonialData, setTestimonialData] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetch("https://toyland-treasures-server.vercel.app/testimonials")
       .then((res) => res.json())
@@ -27,6 +29,7 @@ const AddTestimonial = () => {
   }, []);
   const handleAdd = (event) => {
     event.preventDefault();
+    setLoading(true);
     const testimonial = {
       id: testimonialData.length + 1,
       name,
@@ -47,6 +50,7 @@ const AddTestimonial = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
+          setLoading(false);
           Swal.fire(
             "Added!",
             "You have been successfully added testimonial.",
@@ -58,6 +62,20 @@ const AddTestimonial = () => {
         console.log(error);
       });
   };
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[90vh] z-50">
+        <Dna
+          visible={true}
+          height="120"
+          width="120"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  }
   return (
     <div>
       {/* component */}

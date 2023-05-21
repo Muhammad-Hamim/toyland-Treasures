@@ -11,6 +11,7 @@ import { HiCurrencyDollar } from "react-icons/hi";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import useTitle from "../../../hooks/useTitle";
+import { Dna } from "react-loader-spinner";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
@@ -21,9 +22,11 @@ const AddToy = () => {
   const [availability, setAvailability] = useState("");
   const [rating, setRating] = useState("");
   const [description, setDescription] = useState("");
-  useTitle('Add a toy');
+  const [loading, setLoading] = useState(false);
+  useTitle("Add a toy");
   const handleAdd = (event) => {
     event.preventDefault();
+    setLoading(true);
     const sellerName = user ? user.displayName : "Seller name not found";
     const sellerEmail = user ? user.email : "Email not found";
     const toys = {
@@ -49,6 +52,7 @@ const AddToy = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
+          setLoading(false);
           Swal.fire(
             "Added!",
             "You have been successfully added the toy.",
@@ -60,6 +64,20 @@ const AddToy = () => {
         console.log(error);
       });
   };
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[90vh] z-50">
+        <Dna
+          visible={true}
+          height="120"
+          width="120"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  }
   return (
     <>
       {/* component */}

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import {
   MdInsertPhoto,
-  MdOutlineMailOutline,
   MdAccountBox,
   MdShoppingCart,
   MdDescription,
@@ -11,8 +10,11 @@ import { TbCategory2, TbStarFilled } from "react-icons/tb";
 import { HiCurrencyDollar } from "react-icons/hi";
 import Swal from "sweetalert2";
 import useTitle from "../../../../hooks/useTitle";
+import { Dna } from "react-loader-spinner";
 const UpdateToy = () => {
-  useTitle('Update toy info')
+
+  useTitle('Update toy info');
+  const [loading, setLoading] = useState(false);
   const toy = useLoaderData();
   const {
     _id,
@@ -28,6 +30,7 @@ const UpdateToy = () => {
   } = toy;
   const handleUpdate = (event) => {
     event.preventDefault();
+    setLoading(true)
     const form = event.target;
     const toyName = form.toyName.value;
     const toyPhoto = form.toyPhoto.value;
@@ -58,6 +61,7 @@ const UpdateToy = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
+          setLoading(false)
           Swal.fire({
             title: "Success!",
             text: "You have successfully updated toy info",
@@ -67,6 +71,20 @@ const UpdateToy = () => {
         }
       });
   };
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[90vh] z-50">
+        <Dna
+          visible={true}
+          height="120"
+          width="120"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  }
   return (
     <div>
       <>
