@@ -15,7 +15,6 @@ const AllToys = () => {
   const options = ["Ascending", "Descending"];
   const [value, setValue] = useState(options[0]);
   const [searchQuery, setSearchQuery] = useState("");
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -34,6 +33,7 @@ const AllToys = () => {
           },
         }
       );
+
       setToys(response.data);
       setLoading(false);
     } catch (error) {
@@ -128,57 +128,51 @@ const AllToys = () => {
         </div>
       </div>
       {/* search and sort */}
-      {!user ? (
-        <div className="overflow-x-auto shadow-md sm:rounded-lg w-full">
-          <table className="w-full text-sm text-left text-gray-500 ">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-              <tr>
-                <th scope="col" className="px-6 py-3">
-                  Product Photo
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Product name
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Seller Name
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Category
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Price
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Rating
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody className="items-center">
-              {toys.map((toyData) => {
-                return (
-                  <AllToyData key={toyData._id} toyData={toyData}></AllToyData>
-                );
-              })}
-            </tbody>
-          </table>
-          {toys.length > 20 && (
-            <div className="flex justify-center py-6 w-full">
-              <button
-                type="button"
-                className="text-white bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">
-                show all
-              </button>
-            </div>
-          )}
-        </div>
-      ) : (
-        <h2 className="text-red-500 text-center font-black text-2xl md:text-5xl lg:text-7xl">
-          Data not found. Please log out first to see all toy!
-        </h2>
-      )}
+      <div className="overflow-x-auto shadow-md sm:rounded-lg w-full">
+        <table className="w-full text-sm text-left text-gray-500 ">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Product Photo
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Product name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Seller Name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Category
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Price
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Rating
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody className="items-center">
+            {toys.map((toyData) => {
+              return (
+                <AllToyData key={toyData._id} toyData={toyData}></AllToyData>
+              );
+            })}
+          </tbody>
+        </table>
+        {toys.length > 20 && (
+          <div className="flex justify-center py-6 w-full">
+            <button
+              type="button"
+              className="text-white bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">
+              show all
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
